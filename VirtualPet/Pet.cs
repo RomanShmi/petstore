@@ -34,8 +34,12 @@ namespace VirtualPet
         {
             return this.Health;
         }
-
-
+   //   
+   //     public int GetHealth() {
+   //
+     //       this.Health = 30;
+       //     return this.Health;
+      //  }
 
 
 

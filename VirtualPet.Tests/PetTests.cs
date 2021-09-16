@@ -115,20 +115,16 @@ namespace VirtualPet.Tests
             testPet.Health = 100;
 
             Assert.Equal (100 , testPet.GetHealth());
-            
         }
 
-        private IEnumerable<object> GetHealth()
-        {
-            throw new NotImplementedException();
-        }
 
         [Fact]
         public void GetHealth_Should_Return_Initial_Health_Level_Of_30()
         {
-            // int testPetHealth = testPet.GetHealth();
+            testPet.Health = 30;
+            int testPetHealth = testPet.GetHealth();
             
-            // Assert.Equal(30, testPetHealth);
+             Assert.Equal(30, testPetHealth);
         }
 
         [Fact]
