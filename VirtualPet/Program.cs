@@ -1,11 +1,18 @@
-﻿using System;
+using System;
+
+using System.Threading;
+
+
 
 namespace VirtualPet
+
 {
+
     class Program
     {
         static void Main(string[] args)
         {
+            Timer _timer = new Timer(Tick, null, 0, 15000);
             PlayThemeSong();
             RunAnimatedMenu();
 
@@ -256,5 +263,15 @@ namespace VirtualPet
             Console.ReadLine();
 
         }
+      
+      public static void Tick(Object o)
+
+        {
+
+            // put methods/updates that change the pet in some way
+
+            Console.WriteLine("Tick");
+
+        }
     }
 }
