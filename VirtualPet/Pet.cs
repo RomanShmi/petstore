@@ -41,7 +41,23 @@ namespace VirtualPet
         
         public void Play() {  this.Hunger+= 10; }
 
-        public void Tick() { this.Boredom += 5; this.Health -= 5; }
+        public void Tick() {
+            if((this.Boredom += 5)> 100)
+            {
+                this.Boredom = 100;
+            }
+            
+            if ((this.Health -= 5) < 0) 
+            {
+                this.Health = 0;
+            }
+            
+            if ((this.Hunger += 5) > 100)
+            {
+                this.Hunger = 100;
+            }
+            // will prevent amounts going over 100 or into negatives; caps them off by setting a "max/min"
+        }
 
 
 

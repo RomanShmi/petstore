@@ -12,7 +12,7 @@ namespace VirtualPet
     {
         static void Main(string[] args)
         {
-            Timer _timer = new Timer(Tick, null, 0, 15000);
+            
             PlayThemeSong();
             RunAnimatedMenu();
 
@@ -109,6 +109,8 @@ namespace VirtualPet
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
+
+                Timer _timer = new Timer(Tick, null, 0, 15000);
 
                 Console.WriteLine("What would you like to do?");
                 Console.WriteLine("1. Check your pet's status.");
@@ -265,10 +267,12 @@ namespace VirtualPet
         }
       
       public static void Tick(Object o)
-
         {
+            Pet pet = new Pet();  
+           
+            pet.Tick();  //will +5 Hunger/ +5 Boredom/ -5 Health
 
-            // put methods/updates that change the pet in some way
+            // put methods/updates that change the pet in some way            
 
             Console.WriteLine("Tick");
 
