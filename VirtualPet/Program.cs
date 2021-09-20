@@ -13,7 +13,7 @@ namespace VirtualPet
         static void Main(string[] args)
         {
             Timer _timer = new Timer(Tick, null, 0, 15000);
-            PlayThemeSong();
+            //PlayThemeSong();
             RunAnimatedMenu();
 
             //options menu: create a new pet or exit
@@ -91,14 +91,14 @@ namespace VirtualPet
             Console.WriteLine("There are many cute pets just waiting to be your friend.");
             Console.WriteLine("What kind of pet do you pick? Enter its species:");
             string petSpecies = Console.ReadLine();
-            Console.WriteLine("What a cute " + petSpecies + "you picked!");
+            Console.WriteLine("What a cute " + petSpecies + " you picked!");
             Console.WriteLine("What would you like to name your pet?");
             string petName = Console.ReadLine();
 
-            Pet pet = new Pet();
+            Pet pet1 = new Pet();
 
-            pet.SetSpecies(petSpecies);
-            pet.SetName(petName);
+            pet1.SetSpecies(petSpecies);
+            pet1.SetName(petName);
 
             //initialize pet attributes
 
@@ -125,15 +125,16 @@ namespace VirtualPet
                         break;
                     case "2":
                         //method to feed pet
-                        //FeedPet(pet);
+                        //PLACEHOLDER;
                         break;
                     case "3":
                         //method to play with pet
-                        //PlayWithPet(pet);
+                        //PLACEHOLDER;
                         break;
                     case "4":
-                        //method to take pet to doctor
-                        //DoctorVisit();
+                        //method to take pet to doctor    git push --set-upstream origin timer
+
+                        //PLACEHOLDER;
                         break;
                     case "q":
                         keepPlaying = false;
