@@ -12,7 +12,7 @@ namespace VirtualPet
     {
         static void Main(string[] args)
         {
-            PlayThemeSong();
+            //PlayThemeSong();
             RunAnimatedMenu();
 
             Console.WriteLine("Welcome to the Pet Shop!");
@@ -27,6 +27,10 @@ namespace VirtualPet
 
             pet1.SetSpecies(petSpecies);
             pet1.SetName(petName);
+            pet1.Boredom = 50;
+            pet1.Hunger = 50;
+            pet1.Health = 50;
+
 
             //initialize pet attributes
 
@@ -48,20 +52,16 @@ namespace VirtualPet
                 switch (userInput)
                 {
                     case "1":
-                        //method to check pet status
+                        pet1.CheckStatus();
                         break;
                     case "2":
-                        //method to feed pet
-                        //PLACEHOLDER;
+                        pet1.Feed();
                         break;
                     case "3":
-                        //method to play with pet
-                        //PLACEHOLDER;
+                        pet1.Play();
                         break;
                     case "4":
-                        //method to take pet to doctor    git push --set-upstream origin timer
-
-                        //PLACEHOLDER;
+                        pet1.SeeDoctor();
                         break;
                     case "q":
                         keepPlaying = false;
