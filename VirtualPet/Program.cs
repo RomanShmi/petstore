@@ -12,7 +12,8 @@ namespace VirtualPet
     {
         static void Main(string[] args)
         {
-            //PlayThemeSong();
+            
+            PlayThemeSong();
             RunAnimatedMenu();
 
             Console.WriteLine("Welcome to the Pet Shop!");
@@ -115,5 +116,17 @@ namespace VirtualPet
                 Console.Clear();
             }
         }
+      
+      public static void Tick(Object o)
+        {
+            Pet pet = new Pet();  
+           
+            pet.Tick();  //will +5 Hunger/ +5 Boredom/ -5 Health
+
+            // put methods/updates that change the pet in some way            
+
+            Console.WriteLine("Tick");
+
+        }
     }
 }

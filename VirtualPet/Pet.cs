@@ -49,6 +49,38 @@ namespace VirtualPet
             Console.ReadKey();
         }
 
+        public void Tick() {
+            if((this.Boredom += 5)> 100)
+            {
+                this.Boredom = 100;
+            }
+            else
+            {
+                this.Boredom += 5;
+            }
+            
+            if((this.Health -= 5) < 0) 
+            {
+                this.Health = 0;
+            }
+            else
+            {
+                this.Health -= 5;
+            }
+            
+            if((this.Hunger += 5) > 100)
+            {
+                this.Hunger = 100;
+            }
+            else
+            {
+                this.Health += 5;
+            }
+            // will prevent amounts going over 100 or into negatives; caps them off by setting a "max/min"
+            //Console.WriteLine( Boredom);
+            //Console.WriteLine(Hunger);
+            //Console.WriteLine()
+           // Console.WriteLine("Pet Status: Boredom  {0}  Hunger  {1}  Health  {2} ", this.Boredom, this.Hunger, this.Health);
         public void Play()
         {
             this.Boredom += 10;
