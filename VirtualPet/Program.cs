@@ -10,6 +10,9 @@ namespace VirtualPet
 
     class Program
     {
+        public static Pet pet1;
+
+        private static Timer _timer;
         static void Main(string[] args)
         {
             
@@ -24,7 +27,8 @@ namespace VirtualPet
             Console.WriteLine("What would you like to name your pet?");
             string petName = Console.ReadLine();
 
-            Pet pet1 = new Pet();
+            _timer = new Timer(Tick, null, 0, 2000);
+            pet1 = new Pet();
 
             pet1.SetSpecies(petSpecies);
             pet1.SetName(petName);
@@ -119,9 +123,9 @@ namespace VirtualPet
       
       public static void Tick(Object o)
         {
-            Pet pet = new Pet();  
+            //Pet pet = new Pet();  
            
-            pet.Tick();  //will +5 Hunger/ +5 Boredom/ -5 Health
+            pet1.Tick();  //will +5 Hunger/ +5 Boredom/ -5 Health
 
             // put methods/updates that change the pet in some way            
 
