@@ -110,7 +110,7 @@ namespace VirtualPet
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.White;
 
-                Timer _timer = new Timer(Tick, null, 0, 15000);
+                Timer _timer = new Timer(Tick, null, 0, 15000); //5min=300000 3min=180000
 
                 Console.WriteLine("What would you like to do?");
                 Console.WriteLine("1. Check your pet's status.");
