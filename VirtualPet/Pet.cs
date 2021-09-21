@@ -21,10 +21,10 @@ namespace VirtualPet
 
         public string Name { set; get; }
         public string Species { set; get; }
-        public int Hunger { set; get; }
-        public int Boredom { set; get; }
+        public int Hunger { set; get; } = 60;
+        public int Boredom { set; get; } = 20;
 
-        public int Health { set; get; }
+        public int Health { set; get; } = 60;
 
 
         public void SetName(string name) { this.Name = name; }
@@ -96,7 +96,7 @@ namespace VirtualPet
             }
             else
             {
-                this.Health += 5;
+                this.Hunger += 5;
             }
             // will prevent amounts going over 100 or into negatives; caps them off by setting a "max/min"
         }

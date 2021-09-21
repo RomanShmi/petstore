@@ -32,7 +32,7 @@ namespace VirtualPet
             Console.WriteLine($"What is the {petSpecies}'s name?");
             string petName = Console.ReadLine();
 
-            _timer = new Timer(Tick, null, 0, 15000);
+            //_timer = new Timer(Tick, null, 0, 15000);
             pet1 = new Ironper();
 
             bool keepPlaying = true;
