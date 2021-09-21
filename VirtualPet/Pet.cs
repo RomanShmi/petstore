@@ -5,7 +5,7 @@ using System.Text;
 namespace VirtualPet
 {
 
-   
+
     public class Pet
     {
         public Pet(string name, string species)
@@ -24,15 +24,15 @@ namespace VirtualPet
         public int Hunger { set; get; }
         public int Boredom { set; get; }
 
-        public int Health { set;  get; }
+        public int Health { set; get; }
 
-      
+
         public void SetName(string name) { this.Name = name; }
         public string GetName() { return this.Name; }
 
-        public void SetSpecies(string sp) {  this.Species=sp; }
+        public void SetSpecies(string sp) { this.Species = sp; }
         public string GetSpecies() { return this.Species; }
-        public int GetHunger() {  return this.Hunger; }
+        public int GetHunger() { return this.Hunger; }
 
         public int GetBoredom() {  return this.Boredom; }
             
@@ -40,6 +40,7 @@ namespace VirtualPet
         {
             return this.Health;
         }
+<<<<<<< HEAD
         
         public void Feed() {
 
@@ -57,8 +58,66 @@ namespace VirtualPet
         }
         
         public void Play() {  this.Hunger+= 10; this.Health -= 15; }
+=======
 
-        public void Tick() { this.Boredom += 5; this.Health -= 5; }
+        public void Feed()
+        {
+            this.Hunger += 40;
+            Console.WriteLine("You fed your pet");
+            Console.ReadKey();
+        }
+
+        public void SeeDoctor()
+        {
+            this.Health += 30;
+            Console.WriteLine("You took your pet to the Doctor");
+            Console.ReadKey();
+        }
+
+        public void Tick()
+        {
+            if ((this.Boredom += 5) > 100)
+            {
+                this.Boredom = 100;
+            }
+            else
+            {
+                this.Boredom += 5;
+            }
+
+            if ((this.Health -= 5) < 0)
+            {
+                this.Health = 0;
+            }
+            else
+            {
+                this.Health -= 5;
+            }
+
+            if ((this.Hunger += 5) > 100)
+            {
+                this.Hunger = 100;
+            }
+            else
+            {
+                this.Health += 5;
+            }
+            // will prevent amounts going over 100 or into negatives; caps them off by setting a "max/min"
+            //Console.WriteLine( Boredom);
+            //Console.WriteLine(Hunger);
+            //Console.WriteLine()
+            // Console.WriteLine("Pet Status: Boredom  {0}  Hunger  {1}  Health  {2} ", this.Boredom, this.Hunger, this.Health);
+        }
+
+
+        public void Play()
+        {
+            this.Boredom += 10;
+            Console.WriteLine("You played with your pet");
+            Console.ReadKey();
+        }
+>>>>>>> d6aafa86912a5d551ed8fbd865fce586ec1e7433
+
 
 
         public void CheckStatus()
@@ -68,6 +127,13 @@ namespace VirtualPet
 
 
 
+        public void CheckStatus()
+        {
 
+            Console.WriteLine("Bored Level " + GetBoredom());
+            Console.WriteLine("Hunger Level " + GetHunger());
+            Console.WriteLine("Health Level " + GetHealth());
+            Console.ReadKey();
+        }
     }
 }
