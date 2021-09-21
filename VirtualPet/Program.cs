@@ -1,8 +1,8 @@
 using System;
-
+using System.Linq;
+using System.Collections.Generic;
 using System.Threading;
-
-
+using VirtualPet;
 
 namespace VirtualPet
 
@@ -10,268 +10,274 @@ namespace VirtualPet
 
     class Program
     {
+
+
         static void Main(string[] args)
         {
-            Timer _timer = new Timer(Tick, null, 0, 15000);
-            PlayThemeSong();
+            //PlayThemeSong();
             RunAnimatedMenu();
 
-            //options menu: create a new pet or exit
-
-            bool keepPlaying = true;
-            while (keepPlaying == true)
-            {
-                Console.WriteLine("What would you like to do?");
-                Console.WriteLine("Press N to create a new pet!");
-                Console.WriteLine("Press Q to exit.");
-                string userInput = Console.ReadLine().ToLower();
-                switch (userInput)
-                {
-                    case "n":
-                        MainGame();
-                        break;
-                    case "q":
-                        keepPlaying = false;
-                        break;
-                    default:
-                        break;
-
-                }
-
-            }
-        }
-
-
-        public static void PlayThemeSong()
-        {
-
-            Console.Beep(262, 250); //C
-            Console.Beep(294, 250); //D
-            Console.Beep(330, 250); //E
-            Console.Beep(294, 500); //D
-            Console.Beep(262, 500); //C
-            Console.Beep(392, 750); //G
-        }
-
-        public static void RunAnimatedMenu()
-        {
-            Console.WriteLine("\n\n\n\n\n\t\t\t\t\tHello! Welcome to CyberPets! =^.u.^=\n\n\n\n\n");
-            Console.WriteLine("\t\t\t\t\tPress any key to continue.");
-            Console.ReadKey();
-            Console.Clear();
-
-            for (int i = 5; i > 0; i--)
-            {
-                for (int j = i; j > 0; j--)
-                {
-                    Console.Write("\n");
-                }
-                Console.WriteLine("\t\t\t\t\tHello! Welcome to CyberPets! =^.u.^=\n\n\n\n\n");
-                Console.WriteLine("\t\t\t\t\tPress any key to continue.");
-                System.Threading.Thread.Sleep(250);
-                Console.Clear();
-            }
-
-            for (int k = 5; k > 0; k--)
-            {
-                for (int l = k; l > 0; l--)
-                {
-                    Console.Write("\n");
-                }
-                Console.WriteLine("\t\t\t\t\tPress any key to continue.");
-                System.Threading.Thread.Sleep(250);
-                Console.Clear();
-            }
-
-        }
-
-        public static void MainGame()
-        {
             Console.WriteLine("Welcome to the Pet Shop!");
             Console.WriteLine("There are many cute pets just waiting to be your friend.");
-            Console.WriteLine("What kind of pet do you pick? Enter its species:");
-            string petSpecies = Console.ReadLine();
-            Console.WriteLine("What a cute " + petSpecies + "you picked!");
-            Console.WriteLine("What would you like to name your pet?");
-            string petName = Console.ReadLine();
+            // Console.WriteLine("What kind of pet do you pick? Enter its species:");
+            // string petSpecies = Console.ReadLine();
+            // Console.WriteLine("What a cute " + petSpecies + " you picked!");
+            // Console.WriteLine("What would you like to name your pet?");
+            // string petName = Console.ReadLine();
 
-            Pet pet = new Pet();
+            Pet pet1 = new Pet();
+            Ironper pet2 = new Ironper();
+            pet1.SetSpecies("flaffi");
+            pet1.SetName("Flower");
+            pet1.Boredom = 50;
+            pet1.Hunger = 50;
+            pet1.Health = 50;
 
-            pet.SetSpecies(petSpecies);
-            pet.SetName(petName);
+            pet2.SetSpecies("robot200");
+            pet2.SetName("Iron");
+            pet2.Boredom = 50;
+            pet2.Hunger = 50;
+            pet2.Health = 50;
 
             //initialize pet attributes
 
-            Console.WriteLine(petName + " looks tired and hungry! You should take them home.");
+         //   Console.WriteLine(petName + " looks tired and hungry! You should take them home.");
 
             bool keepPlaying = true;
-            while (keepPlaying == true)
-            {
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
 
-                Console.WriteLine("What would you like to do?");
-                Console.WriteLine("1. Check your pet's status.");
-                Console.WriteLine("2. Feed your pet.");
-                Console.WriteLine("3. Play with your pet.");
-                Console.WriteLine("4. Take your pet to the doctor.");
-                Console.WriteLine("Press Q to exit the game.");
-                string userInput = Console.ReadLine().ToLower();
-                switch (userInput)
+            Console.WriteLine("What would you like to do?");
+            Console.WriteLine("1. Check your pet's status.");
+            Console.WriteLine("2. Feed your pet.");
+            Console.WriteLine("3. Play with your pet.");
+            Console.WriteLine("4. Take your pet to the doctor.");
+            Console.WriteLine("Press Q to exit the game.");
+
+
+
+            Console.WriteLine("choose pet 1 or 2");
+            int option = Convert.ToInt32(Console.ReadLine());
+          //  Pet pet = null;
+            if (option == 1)
+            {
+                Pet pet = null;
+                pet = pet1;
+                // else { pet = pet2; }
+
+
+
+                while (keepPlaying == true)
                 {
-                    case "1":
-                        //method to check pet status
-                        CheckStatus(pet);
-                        break;
-                    case "2":
-                        //method to feed pet
-                        //FeedPet(pet);
-                        break;
-                    case "3":
-                        //method to play with pet
-                        //PlayWithPet(pet);
-                        break;
-                    case "4":
-                        //method to take pet to doctor
-                        //DoctorVisit();
-                        break;
-                    case "q":
-                        keepPlaying = false;
-                        break;
-                    default:
-                        break;
+                    //  Console.Clear();
+
+                   
+                        Console.WriteLine(" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++     ");
+                    Console.ForegroundColor = ConsoleColor.Red;
+
+                    Console.WriteLine("What would you like to do?");
+                    Console.WriteLine("1. Check your pet's status.");
+                    Console.WriteLine("2. Feed your pet.");
+                    Console.WriteLine("3. Play with your pet.");
+                    Console.WriteLine("4. Take your pet to the doctor.");
+                    Console.WriteLine("5. method Tick.");
+
+                    Console.WriteLine("Press Q to exit the game.");
+                    string userInput = Console.ReadLine().ToLower();
+                    switch (userInput)
+                    {
+                        case "1":
+                            pet.CheckStatus();
+                            // Console.ReadLine();
+                            break;
+                        case "2":
+                            pet.Feed();
+                            pet.CheckStatus();
+                            //Console.ReadLine();
+                            break;
+                        case "3":
+                            pet.Play();
+                            pet1.CheckStatus();
+                            //Console.ReadLine();
+                            break;
+                        case "4":
+                            pet.SeeDoctor();
+                            pet.CheckStatus();
+                            //Console.ReadLine();
+                            break;
+                        case "5":
+                            pet.Tick();
+                            pet.CheckStatus();
+                            //Console.ReadLine();
+                            break;
+
+                        case "q":
+                            keepPlaying = false;
+                            break;
+                        default:
+                           
+                            
+                           
+                            break;
+
+
+
+                    }
+
+
+                    if (pet.GetHealth() < 10   || pet.GetHealth()>100)      { keepPlaying = false; Console.WriteLine("<<<<<<<<<<<<<<<<<<     YOU LOSS       >>>>>>>>>>>>>>>>>>>>"); }
+                    if (pet.GetHunger() > 100  || pet.GetHunger() < 10)     { keepPlaying = false; Console.WriteLine("<<<<<<<<<<<<<<<<<<     YOU LOSS       >>>>>>>>>>>>>>>>>>>>"); }
+                    if (pet.GetBoredom() > 100  ||   pet.GetBoredom() < 10) { keepPlaying = false; Console.WriteLine("<<<<<<<<<<<<<<<<<<     YOU LOSS       >>>>>>>>>>>>>>>>>>>>"); }
+
+                    Console.WriteLine("----------------------------------------------------------------------------------------------------------------");
+                    Console.ReadLine();
+
+
+
+
+
+
 
                 }
 
-            }
-        }
-        public static void CheckStatus(Pet pet)
-        {
-            Console.Clear();
-
-            Console.WriteLine("You look at your pet.\n\n");
-
-            //Checks Hunger
-            int hunger = pet.GetHunger();
-
-            if (hunger > 100)
-            {
-                Console.WriteLine("Your pet looks like they are starving!");
-            }
-            else if ((hunger < 100) && (hunger >= 75))
-            {
-                Console.WriteLine("Your pet looks like they are very hungry.");
-            }
-            else if ((hunger < 75) && (hunger >= 50))
-            {
-                Console.WriteLine("Your pet looks hungry.");
-            }
-            else if ((hunger < 50) && (hunger >= 25))
-            {
-                Console.WriteLine("Your pet does not look hungry.");
+               
             }
             else
             {
-                Console.WriteLine("Your pet looks very well fed!");
-            }
-
-            Console.WriteLine("Your pet's Hunger Level is currently at " + hunger);
+                Ironper pet = pet2;
 
 
-            //Checks Boredom
-            int boredom = pet.GetBoredom();
+                while (keepPlaying == true)
+                {
+                    Console.WriteLine(" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++     ");
+                  
+                    Console.ForegroundColor = ConsoleColor.Green;
+                   // Console.ForegroundColor = ConsoleColor.White;
 
-            if (boredom > 120)
-            {
-                Console.WriteLine("Your pet looks like they are ready to start tearing your house apart!");
-            }
-            else if ((boredom < 120) && (boredom >= 90))
-            {
-                Console.WriteLine("Your pet looks very restless.");
-            }
-            else if ((boredom < 90) && (boredom >= 60))
-            {
-                Console.WriteLine("Your pet looks restless.");
-            }
-            else if ((boredom < 60) && (boredom >= 30))
-            {
-                Console.WriteLine("Your pet looks content.");
-            }
-            else
-            {
-                Console.WriteLine("Your pet looks very happy!");
-            }
+                    Console.WriteLine("What would you like to do?");
+                    Console.WriteLine("1. Check your pet's status.");
+                    Console.WriteLine("2. Feed your pet.");
+                    Console.WriteLine("3. Play with your pet.");
+                    Console.WriteLine("4. Take your pet to the doctor.");
+                    Console.WriteLine("5. method Tick.");
 
-            Console.WriteLine("Your pet's Boredom Level is currently at " + boredom);
+                    Console.WriteLine("Press Q to exit the game.");
+                    string userInput = Console.ReadLine().ToLower();
+                    switch (userInput)
+                    {
+                        case "1":
+                          //  pet.CheckStatus();
+                            pet.HookupCharher();
+                            pet.CheckStatusI();
+                           // Console.ReadLine();
+                            break;
+                        case "2":
+                            pet.CheckStatusI();
+                            pet.FeedI();
+               
+                         //   Console.ReadLine();
+                            break;
+                        case "3":
+                            pet.PlayI();
+                            pet.CheckStatusI();
+                       //     Console.ReadLine();
+                            break;
+                        case "4":
+                            pet.SeeDoctor();
+                            pet.CheckStatusI();
+                        //    Console.ReadLine();
+                            break;
+                        case "5":
+                            pet.Tick();
+                            pet.CheckStatusI();
+                         //   Console.ReadLine();
+                            break;
 
-            //Checks health
-            int health = pet.GetHealth();
-
-            if (health < 0)
-            {
-                Console.WriteLine("Your pet is almost dead!");
-            }
-            else if ((health > 0) && (health <= 15))
-            {
-                Console.WriteLine("Your pet looks very sick. :(");
-            }
-            else if ((health > 15) && (health <= 30))
-            {
-                Console.WriteLine("Your pet looks a little sick.");
-            }
-            else if ((health > 30) && (health <= 45))
-            {
-                Console.WriteLine("Your pet looks healthy.");
-            }
-            else
-            {
-                Console.WriteLine("Your pet is the picture of health!");
-            }
+                        case "q":
+                            keepPlaying = false;
+                            break;
 
 
-            //Displays hunger meter
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("\n\nHunger");
-            for (int i = hunger; i > 0; i--)
-            {
-                Console.Write("\'");
+                        default:
+                           
+
+                           
+                            break;
+
+
+                    }
+
+
+                    if (pet.GetHealth() < 10 || pet.GetHealth() > 100) { keepPlaying = false; Console.WriteLine("<<<<<<<<<<<<<<<<<<     YOU LOSS       >>>>>>>>>>>>>>>>>>>>"); }
+                    if (pet.GetHunger() > 100 || pet.GetHunger() < 10) { keepPlaying = false; Console.WriteLine("<<<<<<<<<<<<<<<<<<     YOU LOSS       >>>>>>>>>>>>>>>>>>>>"); }
+                    if (pet.GetBoredom() > 100 || pet.GetBoredom() < 10) { keepPlaying = false; Console.WriteLine("<<<<<<<<<<<<<<<<<<     YOU LOSS       >>>>>>>>>>>>>>>>>>>>"); }
+
+                    Console.WriteLine("----------------------------------------------------------------------------------------------------------------");
+                    Console.ReadLine();
+
+
+
+
+
+
+
+
+
+
+                }
+                
+
+
+
+
+
             }
-           
-            Console.Write("\n");
-
-            //Displays boredom meter
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("\nBoredom");
-            for (int j = boredom; j > 0; j--)
-            {
-                Console.Write("\'");
-            }
-
-            Console.Write("\n");
-
-            //Displays health meter
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine("Health");
-            for (int k = health; k > 0; k--)
-            {
-                Console.Write("\'");
-            }
-
-            Console.ForegroundColor = ConsoleColor.White;
-
-            Console.WriteLine("\n\nPress enter to return to your shelter.");
-            Console.ReadLine();
 
         }
-      
-      public static void Tick(Object o)
+            public static void PlayThemeSong()
+            {
 
-        {
+                Console.Beep(262, 250); //C
+                Console.Beep(294, 250); //D
+                Console.Beep(330, 250); //E
+                Console.Beep(294, 500); //D
+                Console.Beep(262, 500); //C
+                Console.Beep(392, 750); //G
+            }
 
-            // put methods/updates that change the pet in some way
+            public static void RunAnimatedMenu()
+            {
+                Console.WriteLine("\n\n\n\n\n\t\t\t\t\tHello! Welcome to CyberPets! =^.u.^=\n\n\n\n\n");
+                Console.WriteLine("\t\t\t\t\tPress any key to continue.");
+                Console.ReadKey();
+                Console.Clear();
 
-            Console.WriteLine("Tick");
+                for (int i = 5; i > 0; i--)
+                {
+                    for (int j = i; j > 0; j--)
+                    {
+                        Console.Write("\n");
+                    }
+                    Console.WriteLine("\t\t\t\t\tHello! Welcome to CyberPets! =^.u.^=\n\n\n\n\n");
+                    Console.WriteLine("\t\t\t\t\tPress any key to continue.");
+                    System.Threading.Thread.Sleep(250);
+                    Console.Clear();
+                }
 
-        }
+                for (int k = 5; k > 0; k--)
+                {
+                    for (int l = k; l > 0; l--)
+                    {
+                        Console.Write("\n");
+                    }
+                    Console.WriteLine("\t\t\t\t\tPress any key to continue.");
+                    System.Threading.Thread.Sleep(250);
+                    Console.Clear();
+                }
+            }
+        }
     }
-}
+
+
+
+
