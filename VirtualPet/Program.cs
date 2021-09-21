@@ -27,7 +27,7 @@ namespace VirtualPet
             Console.WriteLine("What would you like to name your pet?");
             string petName = Console.ReadLine();
 
-            _timer = new Timer(Tick, null, 0, 2000);
+            _timer = new Timer(Tick, null, 0, 15000);
             pet1 = new Pet();
 
             pet1.SetSpecies(petSpecies);
@@ -127,7 +127,7 @@ namespace VirtualPet
            
             pet1.Tick();  //will +5 Hunger/ +5 Boredom/ -5 Health
 
-            // put methods/updates that change the pet in some way            
+            // put methods/updates that change the pet in some way             
 
             Console.WriteLine("Tick");
 
