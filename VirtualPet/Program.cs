@@ -17,7 +17,7 @@ namespace VirtualPet
         static void Main(string[] args)
         {
 
-            PlayThemeSong();
+            //PlayThemeSong();
             RunAnimatedMenu();
 
             Console.WriteLine("Welcome to your animal shelter!");
@@ -32,8 +32,8 @@ namespace VirtualPet
             Console.WriteLine($"What is the {petSpecies}'s name?");
             string petName = Console.ReadLine();
 
-            _timer = new Timer(Tick, null, 0, 2000);
-            pet1 = new Pet();
+            _timer = new Timer(Tick, null, 0, 15000);
+            pet1 = new Ironper();
 
             bool keepPlaying = true;
 
@@ -73,12 +73,6 @@ namespace VirtualPet
                         pet1.CheckStatus();
                         //Console.ReadLine();
                         break;
-                    case "5":
-                        pet1.Tick();
-                        pet1.CheckStatus();
-                        //Console.ReadLine();
-                        break;
-
                     case "q":
                         keepPlaying = false;
                         break;

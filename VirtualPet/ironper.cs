@@ -17,17 +17,13 @@ namespace VirtualPet
             this.chargingMode = false; 
         }
 
-        public void Charging(bool charger)
+        public override void Tick() 
         {
             if (chargingMode == true)
             {
                 this.Health += 10;
-            } else this.Health -= 1;
-        }
-
-        public override void Tick() 
-        { 
-            this.Charging(this.chargingMode);
+            }
+            else this.Health -= 1;
         }
 
         public override void CheckStatus() 
