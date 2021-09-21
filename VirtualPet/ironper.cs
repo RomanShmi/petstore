@@ -7,20 +7,45 @@ namespace VirtualPet
         //public int chargLevel;
 
         public bool chargingMode;
-        public void HookupCharher() { this.chargingMode = true; }
-        public void UnHookCharher() { this.chargingMode = false; }
+        public void HookupCharger() 
+        { 
+            this.chargingMode = true; 
+        }
+
+        public void UnHookCharger() 
+        { 
+            this.chargingMode = false; 
+        }
 
         public void Charging(bool charger)
         {
-            if (chargingMode == true) this.Health += 10;
-            else this.Health -= 1;
+            if (chargingMode == true)
+            {
+                this.Health += 10;
+            } else this.Health -= 1;
         }
 
-        public void TickI() { this.Charging(this.chargingMode);  }
-        public void CheckStatusI() { base.CheckStatus(); Console.WriteLine( "Charghing mode is "+ chargingMode); }
+        public override void Tick() 
+        { 
+            this.Charging(this.chargingMode);
+        }
 
-        public void PlayI() { chargingMode = false; base.Health -= 20; }
-        public void FeedI() { HookupCharher(); TickI(); }
+        public override void CheckStatus() 
+        { 
+            base.CheckStatus();
+            Console.WriteLine( "Charging mode is "+ chargingMode);
+        }
+
+        public override void Play() 
+        {
+            chargingMode = false; 
+            base.Health -= 20; 
+        }
+        public override void Feed() 
+        {
+            HookupCharger(); 
+            Tick();
+        }
 
     }
 }
