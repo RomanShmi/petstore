@@ -11,14 +11,12 @@ namespace VirtualPet
     class Program
     {
 
+        public static Shelter MyShelter = new Shelter();
         public static Pet myPet;
 
         private static Timer _timer;
         static void Main(string[] args)
         {
-
-            //PlayThemeSong();
-            //RunAnimatedMenu();
 
             Console.WriteLine("Welcome to your animal shelter!");
             Console.WriteLine("What is the name of your shelter?");
@@ -29,6 +27,13 @@ namespace VirtualPet
             SetNameAndSpecies(shelterName, myPet);
 
             _timer = new Timer(Tick, null, 0, 15000);
+          
+            /*
+            Menu flow:
+             New Game -> Create First Pet ->
+                    Manage Single Pet Menu .... at end <Manage Shelter>
+                    -> Manage Shelter Menu
+             */
 
             bool keepPlaying = true;
 
@@ -76,6 +81,12 @@ namespace VirtualPet
                         break;
                     default:
                         break;
+
+
+
+                        // create "go to/manage shelter" option on menu
+                        // ?need nested loop to access shelter options?
+                        // multi pet interactions?
                 }
             }
         }
@@ -163,10 +174,8 @@ namespace VirtualPet
 
         public static void Tick(Object o)
         {
-            //Pet pet = new Pet();  
-
+            //Pet pet = new Pet();              
             myPet.Tick();  //will +5 Hunger/ +5 Boredom/ -5 Health
-
             // put methods/updates that change the pet in some way
         }
 
