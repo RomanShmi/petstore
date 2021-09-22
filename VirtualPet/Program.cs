@@ -10,7 +10,9 @@ namespace VirtualPet
 
     class Program
     {
-        public static Pet pet1;
+        public static Pet pet1 = new Pet();
+
+        public static Shelter MyShelter = new Shelter();
 
         private static Timer _timer;
         static void Main(string[] args)
@@ -28,16 +30,18 @@ namespace VirtualPet
             string petName = Console.ReadLine();
 
             _timer = new Timer(Tick, null, 0, 15000);
-            pet1 = new Pet();
 
-            pet1.SetSpecies(petSpecies);
-            pet1.SetName(petName);
-            pet1.Boredom = 50;
-            pet1.Hunger = 50;
-            pet1.Health = 50;
+
+            MyShelter.AddPet(pet1);
 
 
             //initialize pet attributes
+
+            /*
+             New Game -> Create First Pet ->
+                    Manage Single Pet Menu .... at end <Manage Shelter>
+                    -> Manage Shelter Menu
+             */
 
             Console.WriteLine(petName + " looks tired and hungry! You should take them home.");
 
