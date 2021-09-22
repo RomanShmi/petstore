@@ -39,7 +39,17 @@ namespace VirtualPet
             ListOfPets.Remove(pet1);
         }
 
-      
+      public void CheckAllStats()
+        {
+            int index = 1;
+            foreach (Pet pet1 in ListOfPets)
+            {
+                Console.WriteLine($"{ index}.{ pet1}");
+                Console.WriteLine($"{pet1.GetName()}, {pet1.GetSpecies()}");
+                pet1.CheckStatus();
+                index++;
+            }
+        }
 
 
     } 
