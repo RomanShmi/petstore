@@ -9,6 +9,7 @@ namespace VirtualPet
     class Shelter
     {
         public List<Pet> ListOfPets = new List<Pet>();
+        public string Name { get; set; }
 
         public void AddPet(Pet pet1)
         {

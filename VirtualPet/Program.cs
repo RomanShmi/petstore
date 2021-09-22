@@ -17,25 +17,26 @@ namespace VirtualPet
         private static Timer _timer;
         static void Main(string[] args)
         {
+            //PlayThemeSong();
+            //RunAnimatedMenu();
+
 
             Console.WriteLine("Welcome to your animal shelter!");
             Console.WriteLine("What is the name of your shelter?");
             string shelterName = Console.ReadLine();
             Console.Clear();
 
-            myPet = ChoosePetType(shelterName);
-            SetNameAndSpecies(shelterName, myPet);
+            MyShelter.Name = shelterName;
+
+            myPet = CreatePet();
+            MyShelter.AddPet(myPet);   
 
             _timer = new Timer(Tick, null, 0, 15000);
           
-            /*
-            Menu flow:
-             New Game -> Create First Pet ->
-                    Manage Single Pet Menu .... at end <Manage Shelter>
-                    -> Manage Shelter Menu
-             */
 
             bool keepPlaying = true;
+            
+
 
             while (keepPlaying == true)
             {
@@ -44,24 +45,29 @@ namespace VirtualPet
                 Console.WriteLine(" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ");
 
                 Console.WriteLine("What would you like to do?");
-                if (myPet is Ironper)
-                    Console.WriteLine("1. Check your robot's status.");
-                else Console.WriteLine("1. Check your pet's status.");
-                if (myPet is Ironper)
-                    Console.WriteLine("2. Fill your robot up with oil.");
-                else Console.WriteLine("2. Feed your pet.");
-                if (myPet is Ironper)
-                    Console.WriteLine("3. Play with your robot.");
-                else Console.WriteLine("3. Play with your pet.");
+                Console.WriteLine("Your active pet is currently: " + myPet.Name);
+
+                string petType = myPet is Ironper ? "robot" : "pet";
+
+                Console.WriteLine($"1. Check your {petType} status.");
+                Console.WriteLine($"2. Feed your {petType}.");
+                Console.WriteLine($"3. Play with your {petType}.");
                 if (myPet is Ironper)
                     Console.WriteLine("4. Hook/Unhook your robot from charger.");
                 else Console.WriteLine("4. Take your pet to the doctor.");
+                Console.WriteLine("5. Choose a new active pet.");
+                Console.WriteLine("6. Create a new pet.");
+                Console.WriteLine($"7. Manage {MyShelter.Name}.");
                 Console.WriteLine("   Press Q to exit the game.");
+
+                //myPet = MyShelter.SelectedPet();
+                //myPet.CheckStatus();
 
                 string userInput = Console.ReadLine().ToLower();
                 switch (userInput)
                 {
                     case "1":
+                        //myPet = MyShelter.SelectPet();
                         myPet.CheckStatus();
                         break;
                     case "2":
@@ -75,6 +81,16 @@ namespace VirtualPet
                     case "4":
                         myPet.SeeDoctor();
                         myPet.CheckStatus();
+                        break;
+                    case "5":
+                        myPet = MyShelter.PickAPet();
+                        break;
+                    case "6":
+                        myPet = CreatePet();
+                        MyShelter.AddPet(myPet);
+                        break;
+                    case "7":
+                        ManageShelter();
                         break;
                     case "q":
                         keepPlaying = false;
@@ -132,22 +148,39 @@ namespace VirtualPet
                 }
             }
 
-        public static Pet ChoosePetType(string shelterName)
+        public static Pet CreatePet()
         {
-            Console.WriteLine($"On your way to {shelterName} you come across a small bundle. It's an...animal or robot?");
+            Console.WriteLine($"On your way to {MyShelter.Name} you come across a small bundle. It's an...animal or robot?");
             Console.WriteLine("Press 1 for animal, 2 for robot.");
             string petType = Console.ReadLine();
+
+            Console.WriteLine("What kind of animal is it?\n Enter its species:");
+            string petSpecies = Console.ReadLine();
+           // myPet.SetSpecies(petSpecies);
+            Console.WriteLine($"The {petSpecies} looks cold and tired. You take it back to {MyShelter.Name}.");
+            Console.WriteLine($"When you arrive, you set the {petSpecies} up in an appropriate cage, and give it a name.");
+            Console.WriteLine($"What is the {petSpecies}'s name?");
+            string petName = Console.ReadLine();
+            // myPet.SetName(petName);
+            Console.WriteLine("Press any key to continue!");
+            Console.Read();
+
+            Pet myPet;
 
             //ADD ERROR CATCHING LOOP HERE
             if (petType == "1")
             {
-                Pet myPet = new Pet();
+                myPet = new Pet();
+                myPet.Name = petName;
+                myPet.Species = petSpecies;
                 Console.WriteLine("The animal looks up at you!");
                 return myPet;
             }
             else // if (petType == "2")
             {
-                Ironper myPet = new Ironper();
+                myPet = new Ironper();
+                myPet.Name = petName;
+                myPet.Species = petSpecies;
                 Console.WriteLine("The robot looks up at you!");
                 return myPet;
             }
@@ -158,18 +191,46 @@ namespace VirtualPet
 
         }
 
-        public static void SetNameAndSpecies(string shelterName, Pet myPet)
+        public static void ManageShelter()
         {
-            Console.WriteLine("What kind of animal is it?\n Enter its species:");
-            string petSpecies = Console.ReadLine();
-            myPet.SetSpecies(petSpecies);
-            Console.WriteLine($"The {myPet.GetSpecies()} looks cold and tired. You take it back to {shelterName}.");
-            Console.WriteLine($"When you arrive, you set the {myPet.GetSpecies()} up in an appropriate cage, and give it a name.");
-            Console.WriteLine($"What is the {myPet.GetSpecies()}'s name?");
-            string petName = Console.ReadLine();
-            myPet.SetName(petName);
-            Console.WriteLine("Press any key to continue!");
-            Console.Read();
+            bool keepPlaying = true;
+
+            while (keepPlaying == true)
+            {
+                Console.Clear();
+                Console.WriteLine($"You survey the pets assembled in {MyShelter.Name}.");
+                Console.WriteLine("What would you like to do?");
+                Console.WriteLine("1. Adopt a pet out of your shelter.");
+                Console.WriteLine("2. See all pets in your shelter.");
+                Console.WriteLine("3. Check status of all pets.");
+                Console.WriteLine("4. Interact with all pets at once.");
+                Console.WriteLine("   Press Q to quit.");
+
+                string userInput = Console.ReadLine().ToLower();
+
+                switch (userInput)
+                {
+                    case "1":
+                        myPet = MyShelter.PickAPet();
+                        MyShelter.Adopt(myPet);
+                        break;
+                    case "2":
+                        MyShelter.ListPets();
+                        break;
+                    case "3":
+                        MyShelter.CheckAllStats();
+                        break;
+                    case "4":
+                        MyShelter.InteractWithAll();
+                        break;
+                    case "q":
+                        keepPlaying = false;
+                        break;
+                    default:
+                        break;
+                }
+
+            }
         }
 
         public static void Tick(Object o)
