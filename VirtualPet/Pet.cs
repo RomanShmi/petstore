@@ -8,16 +8,6 @@ namespace VirtualPet
 
     public class Pet
     {
-        public Pet(string name, string species)
-        {
-            this.Name = name;
-            this.Species = species;
-            this.Health = 60;
-            this.Hunger = 60;
-            this.Boredom = 20;
-        
-        }
-        public Pet() { }
 
         public string Name { set; get; }
         public string Species { set; get; }
@@ -44,21 +34,24 @@ namespace VirtualPet
         public virtual void Feed()
         {
             this.Hunger += 40;
-            Console.WriteLine("You fed your pet");
-            Console.ReadKey();
+            Console.WriteLine("You fed your pet.");
+            Console.WriteLine("Press any key to continue.");
+            Console.Read();
         }
 
         public virtual void SeeDoctor()
         {
             this.Health += 30;
-            Console.WriteLine("You took your pet to the Doctor");
-            Console.ReadKey();
+            Console.WriteLine("You took your pet to the Doctor.");
+            Console.WriteLine("Press any key to continue.");
+            Console.Read();
         }
         public virtual void Play()
         {
             this.Boredom += 10;
-            Console.WriteLine("You played with your pet");
-            Console.ReadKey();
+            Console.WriteLine("You played with your pet.");
+            Console.WriteLine("Press any key to continue.");
+            Console.Read();
         }
 
         public virtual void CheckStatus()
@@ -67,7 +60,8 @@ namespace VirtualPet
             Console.WriteLine("Bored Level " + GetBoredom());
             Console.WriteLine("Hunger Level " + GetHunger());
             Console.WriteLine("Health Level " + GetHealth());
-            Console.ReadKey();
+            Console.WriteLine("Press any key to continue.");
+            Console.Read();
         }
 
         public virtual void Tick()
