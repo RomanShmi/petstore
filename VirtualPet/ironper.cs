@@ -10,17 +10,11 @@ namespace VirtualPet
         public void HookupCharger() 
         { 
             this.chargingMode = true;
-            Console.WriteLine("You hooked your robot up to a charger!");
-            Console.WriteLine("Press any key to continue.");
-            Console.Read();
         }
 
         public void UnHookCharger() 
         { 
             this.chargingMode = false;
-            Console.WriteLine("You unhooked your robot from the charger.");
-            Console.WriteLine("Press any key to continue.");
-            Console.Read();
         }
 
         public override void Tick() 
@@ -96,11 +90,17 @@ namespace VirtualPet
             if (chargingMode == false)
             {
                 HookupCharger();
+                Console.WriteLine("You hooked your robot up to a charger!");
+                Console.WriteLine("Press any key to continue.");
+                Console.Read();
             }
 
             else
             {
                 UnHookCharger();
+                Console.WriteLine("You unhooked your robot from the charger.");
+                Console.WriteLine("Press any key to continue.");
+                Console.Read();
             }
 
             CheckStatus();
