@@ -91,16 +91,12 @@ namespace VirtualPet
             {
                 HookupCharger();
                 Console.WriteLine("You hooked your robot up to a charger!");
-                Console.WriteLine("Press any key to continue.");
-                Console.Read();
             }
 
             else
             {
                 UnHookCharger();
                 Console.WriteLine("You unhooked your robot from the charger.");
-                Console.WriteLine("Press any key to continue.");
-                Console.Read();
             }
 
             CheckStatus();
