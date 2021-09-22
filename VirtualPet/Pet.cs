@@ -8,17 +8,13 @@ namespace VirtualPet
 
     public class Pet
     {
-        public Pet()
-        {
-        }
-
 
         public string Name { set; get; }
         public string Species { set; get; }
-        public int Hunger { set; get; }
-        public int Boredom { set; get; }
+        public int Hunger { set; get; } = 60;
+        public int Boredom { set; get; } = 20;
 
-        public int Health { set; get; }
+        public int Health { set; get; } = 60;
 
 
         public void SetName(string name) { this.Name = name; }
@@ -28,28 +24,47 @@ namespace VirtualPet
         public string GetSpecies() { return this.Species; }
         public int GetHunger() { return this.Hunger; }
 
-        public int GetBoredom() { return this.Boredom; }
+        public int GetBoredom() {  return this.Boredom; }
 
         public int GetHealth()
         {
             return this.Health;
         }
 
-        public void Feed()
+        public virtual void Feed()
         {
             this.Hunger += 40;
-            Console.WriteLine("You fed your pet");
-            Console.ReadKey();
+            Console.WriteLine("You fed your pet.");
+            Console.WriteLine("Press any key to continue.");
+            Console.Read();
         }
 
-        public void SeeDoctor()
+        public virtual void SeeDoctor()
         {
             this.Health += 30;
-            Console.WriteLine("You took your pet to the Doctor");
-            Console.ReadKey();
+            Console.WriteLine("You took your pet to the Doctor.");
+            Console.WriteLine("Press any key to continue.");
+            Console.Read();
+        }
+        public virtual void Play()
+        {
+            this.Boredom += 10;
+            Console.WriteLine("You played with your pet.");
+            Console.WriteLine("Press any key to continue.");
+            Console.Read();
         }
 
-        public void Tick()
+        public virtual void CheckStatus()
+        {
+
+            Console.WriteLine("Bored Level " + GetBoredom());
+            Console.WriteLine("Hunger Level " + GetHunger());
+            Console.WriteLine("Health Level " + GetHealth());
+            Console.WriteLine("Press any key to continue.");
+            Console.Read();
+        }
+
+        public virtual void Tick()
         {
             if ((this.Boredom += 5) > 100)
             {
@@ -75,33 +90,10 @@ namespace VirtualPet
             }
             else
             {
-                this.Health += 5;
+                this.Hunger += 5;
             }
             // will prevent amounts going over 100 or into negatives; caps them off by setting a "max/min"
-            //Console.WriteLine( Boredom);
-            //Console.WriteLine(Hunger);
-            //Console.WriteLine()
-            // Console.WriteLine("Pet Status: Boredom  {0}  Hunger  {1}  Health  {2} ", this.Boredom, this.Hunger, this.Health);
         }
 
-
-        public void Play()
-        {
-            this.Boredom += 10;
-            Console.WriteLine("You played with your pet");
-            Console.ReadKey();
-        }
-
-
-
-
-        public void CheckStatus()
-        {
-
-            Console.WriteLine("Bored Level " + GetBoredom());
-            Console.WriteLine("Hunger Level " + GetHunger());
-            Console.WriteLine("Health Level " + GetHealth());
-            Console.ReadKey();
-        }
     }
 }
