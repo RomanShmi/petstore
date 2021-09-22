@@ -75,6 +75,10 @@ namespace VirtualPet
                         break;
 
 
+
+                        // create "go to/manage shelter" option on menu
+                        // ?need nested loop to access shelter options?
+                        // multi pet interactions?
                 }
 
             }
