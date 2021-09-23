@@ -2,7 +2,7 @@
 
 namespace VirtualPet
 {
-    class Ironper : Pet
+    public class Ironper : Pet
     {
         //public int chargLevel;
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VirtualPet
 {
-    class Shelter
+   public  class Shelter
     {
         public List<Pet> ListOfPets = new List<Pet>();
         public string Name { get; set; }
@@ -26,7 +26,9 @@ namespace VirtualPet
                 Console.WriteLine("List of pets++++++++++++++++++++++++++++++++"); 
                 Console.WriteLine($"{index}: {pet1.GetName()}, {pet1.GetSpecies()}");
                 index++;
+
             }
+            Console.Read();
         }
         public Pet PickAPet()
         {
