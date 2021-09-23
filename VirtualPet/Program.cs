@@ -195,18 +195,21 @@ namespace VirtualPet
         {
             bool keepPlaying = true;
 
-            while (keepPlaying == true)
-            {
-                Console.Clear();
-                Console.WriteLine($"You survey the pets assembled in {MyShelter.Name}.");
-                Console.WriteLine("What would you like to do?");
-                Console.WriteLine("1. Adopt a pet out of your shelter.");
-                Console.WriteLine("2. See all pets in your shelter.");
-                Console.WriteLine("3. Check status of all pets.");
-                Console.WriteLine("4. Interact with all pets at once.");
-                Console.WriteLine("   Press Q to quit.");
+            Console.WriteLine($"You survey the pets assembled in {MyShelter.Name}.");
+            Console.WriteLine("What would you like to do?");
+            Console.WriteLine("1. Adopt a pet out of your shelter.");
+            Console.WriteLine("2. See all pets in your shelter.");
+            Console.WriteLine("3. Check status of all pets.");
+            Console.WriteLine("4. Interact with all pets at once.");
+            Console.WriteLine("   Press Q to quit.");
 
-                string userInput = Console.ReadLine().ToLower();
+            // MyShelter.ListPets();
+            string userInput = Console.ReadLine().ToLower();
+            
+            while (keepPlaying)
+            {
+                // Console.Clear();
+                userInput = Console.ReadLine().ToLower();
 
                 switch (userInput)
                 {
@@ -216,6 +219,7 @@ namespace VirtualPet
                         break;
                     case "2":
                         MyShelter.ListPets();
+                       
                         break;
                     case "3":
                         MyShelter.CheckAllStats();
@@ -227,6 +231,8 @@ namespace VirtualPet
                         keepPlaying = false;
                         break;
                     default:
+                        Console.WriteLine("Some garbage");
+                        
                         break;
                 }
 

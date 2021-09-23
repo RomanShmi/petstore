@@ -20,10 +20,10 @@ namespace VirtualPet
         public void ListPets()
         {
             int index = 1;
-
+            // Console.WriteLine("Something++++++++++++++++++++++");
             foreach (Pet pet1 in ListOfPets)
             {
-
+                Console.WriteLine("List of pets++++++++++++++++++++++++++++++++"); 
                 Console.WriteLine($"{index}: {pet1.GetName()}, {pet1.GetSpecies()}");
                 index++;
 
@@ -32,7 +32,7 @@ namespace VirtualPet
         }
         public Pet PickAPet()
         {
-            Console.Clear();
+           // Console.Clear();
 
             Console.WriteLine("Please pick a pet from the list:  ");
             int index = 1;
@@ -60,6 +60,7 @@ namespace VirtualPet
             foreach (Pet pet1 in ListOfPets)
             {
                 Console.WriteLine($"{index}: {pet1.GetName()}, {pet1.GetSpecies()}");
+                Console.WriteLine(" shelter outcome");
                 pet1.CheckStatus();
                 index++;
             }
