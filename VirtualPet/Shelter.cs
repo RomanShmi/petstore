@@ -23,9 +23,12 @@ namespace VirtualPet
 
             foreach (Pet pet1 in ListOfPets)
             {
+
                 Console.WriteLine($"{index}: {pet1.GetName()}, {pet1.GetSpecies()}");
                 index++;
+
             }
+            Console.Read();
         }
         public Pet PickAPet()
         {

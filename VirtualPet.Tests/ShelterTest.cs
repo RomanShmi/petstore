@@ -8,8 +8,8 @@ namespace VirtualPet.Tests
     {
         private Shelter shelter;
 
-        public  Shelter1Test()
-        { shelter = new Shelter();     }
+        public Shelter1Test()
+        { shelter = new Shelter(); }
 
 
         [Fact]
@@ -20,10 +20,24 @@ namespace VirtualPet.Tests
 
             Assert.Single(shelter.ListOfPets);
         }
+        [Fact]
+        public void ListPets_Should_Be_Empty_By_Default()
+        {
+            shelter.ListOfPets = new List<Pet>();
+
+            Assert.Empty(shelter.ListOfPets);
+        }
+        [Fact]
+        public void Adopt_Should_Decrease_List_By_1()
+        {
+            shelter.ListOfPets = new List<Pet>();
+            
+            Pet pet1 = new Pet();
+            shelter.AddPet(pet1);
+            shelter.Adopt(pet1);
+            Assert.Empty(shelter.ListOfPets);
 
 
-
-
-
+        }
     }
 }
