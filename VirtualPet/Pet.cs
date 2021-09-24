@@ -33,7 +33,7 @@ namespace VirtualPet
 
         public virtual void Feed()
         {
-            this.Hunger += 40;
+            this.Hunger -= 40;
             Console.WriteLine("You fed your pet.");
             Console.WriteLine("Press any key to continue.");
             Console.Read();
@@ -48,7 +48,9 @@ namespace VirtualPet
         }
         public virtual void Play()
         {
-            this.Boredom += 10;
+            this.Boredom -= 20;
+            this.Health += 10;
+            this.Hunger += 10;
             Console.WriteLine("You played with your pet.");
             Console.WriteLine("Press any key to continue.");
             Console.Read();
@@ -70,28 +72,28 @@ namespace VirtualPet
             {
                 this.Boredom = 100;
             }
-            else
-            {
-                this.Boredom += 5;
-            }
+            //else
+            //{
+            //    this.Boredom += 5;
+            //}
 
             if ((this.Health -= 5) < 0)
             {
                 this.Health = 0;
             }
-            else
-            {
-                this.Health -= 5;
-            }
+            //else
+            //{
+            //    this.Health -= 5;
+            //}
 
             if ((this.Hunger += 5) > 100)
             {
                 this.Hunger = 100;
             }
-            else
-            {
-                this.Hunger += 5;
-            }
+            //else
+            //{
+            //    this.Hunger += 5;
+            //}
             // will prevent amounts going over 100 or into negatives; caps them off by setting a "max/min"
         }
 
