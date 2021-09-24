@@ -267,7 +267,7 @@ namespace VirtualPet
             //Pet pet = new Pet();              
            // myPet.Tick();  //will +5 Hunger/ +5 Boredom/ -5 Health
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+          //  Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
            // MyShelter.ListPets();
 
@@ -282,7 +282,7 @@ namespace VirtualPet
                 
                 
                 
-              //  Console.WriteLine($"{index}: {pet1.GetName()}, {pet1.GetSpecies()}"+ "  after   hunger  " + pet1.Hunger + " helth  " + pet1.Health );
+               // Console.WriteLine($"{index}: {pet1.GetName()}, {pet1.GetSpecies()}"+ "  after   hunger  " + pet1.Hunger + " helth  " + pet1.Health );
 
 
                 index++;

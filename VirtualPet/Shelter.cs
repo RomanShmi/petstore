@@ -77,7 +77,7 @@ namespace VirtualPet
                 Console.WriteLine("1. Feed all pets.");
                 Console.WriteLine("2. Play with all pets.");
                 Console.WriteLine("3. Heal all pets.");
-                Console.WriteLine("Press Q to return to main menu.");
+                Console.WriteLine("Press q to return to main menu.");
                 string UserInput = Console.ReadLine().ToLower();
 
                 int index = 1;
