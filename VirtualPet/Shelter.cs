@@ -19,11 +19,11 @@ namespace VirtualPet
 
         public void ListPets()
         {
-            int index = 1;
-            // Console.WriteLine("Something++++++++++++++++++++++");
+            int index = 0;
+             Console.WriteLine("+++++++++++++++++++++  listPets() method ++++++++++++++++++++++++++++++++++++++++++++++++++");
             foreach (Pet pet1 in ListOfPets)
             {
-                Console.WriteLine("List of pets++++++++++++++++++++++++++++++++"); 
+               
                 Console.WriteLine($"{index}: {pet1.GetName()}, {pet1.GetSpecies()}");
                 index++;
 
@@ -56,6 +56,8 @@ namespace VirtualPet
 
       public void CheckAllStats()
         {
+
+            Console.WriteLine("+++++++++++++++++++++  CheckAllStats() method ++++++++++++++++++++++++++++++++++++++++++++++++++");
             int index = 1;
             foreach (Pet pet1 in ListOfPets)
             {

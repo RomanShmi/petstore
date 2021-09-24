@@ -31,17 +31,17 @@ namespace VirtualPet
             myPet = CreatePet();
             MyShelter.AddPet(myPet);   
 
-            _timer = new Timer(Tick, null, 0, 15000);
+           // _timer = new Timer(Tick, null, 0, 5000);
           
 
             bool keepPlaying = true;
             
 
 
-            while (keepPlaying == true)
+            while (keepPlaying)
             {
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.White;
+               // Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ");
 
                 Console.WriteLine("What would you like to do?");
@@ -58,12 +58,14 @@ namespace VirtualPet
                 Console.WriteLine("5. Choose a new active pet.");
                 Console.WriteLine("6. Create a new pet.");
                 Console.WriteLine($"7. Manage {MyShelter.Name}.");
+                
                 Console.WriteLine("   Press Q to exit the game.");
 
                 //myPet = MyShelter.SelectedPet();
                 //myPet.CheckStatus();
 
                 string userInput = Console.ReadLine().ToLower();
+               
                 switch (userInput)
                 {
                     case "1":
@@ -95,7 +97,11 @@ namespace VirtualPet
                     case "q":
                         keepPlaying = false;
                         break;
+                   
+                    
                     default:
+                        
+                        
                         break;
 
 
@@ -150,23 +156,31 @@ namespace VirtualPet
 
         public static Pet CreatePet()
         {
+          
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"On your way to {MyShelter.Name} you come across a small bundle. It's an...animal or robot?");
             Console.WriteLine("Press 1 for animal, 2 for robot.");
+            
+            
             string petType = Console.ReadLine();
 
             Console.WriteLine("What kind of animal is it?\n Enter its species:");
             string petSpecies = Console.ReadLine();
-           // myPet.SetSpecies(petSpecies);
-            Console.WriteLine($"The {petSpecies} looks cold and tired. You take it back to {MyShelter.Name}.");
-            Console.WriteLine($"When you arrive, you set the {petSpecies} up in an appropriate cage, and give it a name.");
-            Console.WriteLine($"What is the {petSpecies}'s name?");
-            string petName = Console.ReadLine();
-            // myPet.SetName(petName);
-            Console.WriteLine("Press any key to continue!");
-            Console.Read();
-
+            /*      // myPet.SetSpecies(petSpecies);
+                   Console.WriteLine($"The {petSpecies} looks cold and tired. You take it back to {MyShelter.Name}.");
+                   Console.WriteLine($"When you arrive, you set the {petSpecies} up in an appropriate cage, and give it a name.");
+                   Console.WriteLine($"What is the {petSpecies}'s name?");
+                   string petName = Console.ReadLine();
+                   // myPet.SetName(petName);
+                   Console.WriteLine("Press any key to continue!");
+                   Console.Read();
+            */
+          
             Pet myPet;
+          //  string petType = Console.ReadLine();
+            Console.WriteLine(" pet name please");
 
+            string petName = Console.ReadLine();
             //ADD ERROR CATCHING LOOP HERE
             if (petType == "1")
             {
@@ -194,22 +208,23 @@ namespace VirtualPet
         public static void ManageShelter()
         {
             bool keepPlaying = true;
-
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine($"You survey the pets assembled in {MyShelter.Name}.");
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("1. Adopt a pet out of your shelter.");
             Console.WriteLine("2. See all pets in your shelter.");
             Console.WriteLine("3. Check status of all pets.");
             Console.WriteLine("4. Interact with all pets at once.");
+            Console.WriteLine("5.  TIMER START");
             Console.WriteLine("   Press Q to quit.");
 
             // MyShelter.ListPets();
-            string userInput = Console.ReadLine().ToLower();
+            //string userInput = Console.ReadLine().ToLower();
             
             while (keepPlaying)
             {
-                // Console.Clear();
-                userInput = Console.ReadLine().ToLower();
+                Console.ForegroundColor = ConsoleColor.Blue;
+                string userInput = Console.ReadLine().ToLower();
 
                 switch (userInput)
                 {
@@ -224,14 +239,22 @@ namespace VirtualPet
                     case "3":
                         MyShelter.CheckAllStats();
                         break;
+
                     case "4":
                         MyShelter.InteractWithAll();
                         break;
+                    case "5":
+                        ///////////////////////////////////////////////////////////////////////////timer start
+                       _timer = new Timer(Tick, null, 0, 3000);
+
+                        break;
+
+
                     case "q":
                         keepPlaying = false;
                         break;
                     default:
-                        Console.WriteLine("Some garbage");
+                       // userInput = Console.ReadLine().ToLower();
                         
                         break;
                 }
@@ -242,7 +265,31 @@ namespace VirtualPet
         public static void Tick(Object o)
         {
             //Pet pet = new Pet();              
-            myPet.Tick();  //will +5 Hunger/ +5 Boredom/ -5 Health
+           // myPet.Tick();  //will +5 Hunger/ +5 Boredom/ -5 Health
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+
+           // MyShelter.ListPets();
+
+            int  index = 0;
+            
+            
+            foreach (Pet pet1 in MyShelter.ListOfPets)
+            {
+                Console.WriteLine($"{index}: {pet1.GetName()}, {pet1.GetSpecies()}"+" before  hunger  "+ pet1.Hunger+" helth  "+pet1.Health  );
+
+                pet1.Tick();
+                
+                
+                
+                Console.WriteLine($"{index}: {pet1.GetName()}, {pet1.GetSpecies()}"+ "  after   hunger  " + pet1.Hunger + " helth  " + pet1.Health );
+
+
+                index++;
+           
+            }
+
+            Console.WriteLine("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
             // put methods/updates that change the pet in some way
         }
 
