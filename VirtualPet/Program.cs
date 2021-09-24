@@ -245,7 +245,7 @@ namespace VirtualPet
                         break;
                     case "5":
                         ///////////////////////////////////////////////////////////////////////////timer start
-                       _timer = new Timer(Tick, null, 0, 3000);
+                       _timer = new Timer(Tick, null, 0, 7000);
 
                         break;
 
@@ -276,20 +276,20 @@ namespace VirtualPet
             
             foreach (Pet pet1 in MyShelter.ListOfPets)
             {
-                Console.WriteLine($"{index}: {pet1.GetName()}, {pet1.GetSpecies()}"+" before  hunger  "+ pet1.Hunger+" helth  "+pet1.Health  );
+              //  Console.WriteLine($"{index}: {pet1.GetName()}, {pet1.GetSpecies()}"+" before  hunger  "+ pet1.Hunger+" helth  "+pet1.Health  );
 
                 pet1.Tick();
                 
                 
                 
-                Console.WriteLine($"{index}: {pet1.GetName()}, {pet1.GetSpecies()}"+ "  after   hunger  " + pet1.Hunger + " helth  " + pet1.Health );
+              //  Console.WriteLine($"{index}: {pet1.GetName()}, {pet1.GetSpecies()}"+ "  after   hunger  " + pet1.Hunger + " helth  " + pet1.Health );
 
 
                 index++;
            
             }
 
-            Console.WriteLine("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+           // Console.WriteLine("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
             // put methods/updates that change the pet in some way
         }
 
